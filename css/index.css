@@ -1,0 +1,218 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #7FB1F1;
+  font-family: 'Roboto', sans-serif;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type=button] {
+  font-size: 1.8rem;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  color: white;
+  padding: 1rem;
+}
+
+input[type=button]:focus {
+  outline: none;
+}
+
+.calc {
+  margin: auto;
+  text-align: center;
+  width: 340px;
+  height: 540px;
+}
+
+.screen {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: none;
+  height: 160px;
+  font-size: 2.5rem;
+  text-align: right;
+  background-color: white;
+  color: black;
+}
+
+.face-buttons {
+  background-color: #434343;
+  z-index: 10;
+}
+
+.face-buttons .btn {
+  background-color: #434343;
+  width: 78px;
+}
+
+.operators {
+  background-color: #636363;
+  z-index: 5;
+}
+
+.operators .btn {
+  background-color: #636363;
+}
+
+.special-operators {
+  width: 25px;
+  background-color: #1de9b6;
+  z-index: 1000;
+}
+
+.special-operators .btn:nth-child(odd) {
+  margin-left: 25px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 1.1em;
+  color: white;
+}
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #434343;
+}
+
+
+/* All things Grid, Flexbox, Box Alignment */
+
+.wrapper,
+.subgrid {
+  display: grid;
+}
+
+.wrapper {
+  grid-template-areas:
+    "total total total total total"
+    "face face face oper spec"
+    "face face face oper spec"
+    "face face face oper spec"
+    "face face face oper spec";
+  grid-template-columns: 1fr;
+}
+
+.screen {
+  grid-area: total;
+}
+
+.face-buttons {
+  grid-area: face;
+}
+
+.operators {
+  grid-area: oper;
+}
+
+.special-operators {
+  grid-area: spec;
+}
+
+.screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.face-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 390px;
+}
+
+.operators .btn {
+  font-size: 1.3rem;
+  width: 90px;
+}
+
+.special-operators {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  -webkit-transition: width .1s linear;
+  transition: width .1s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index: 1000;
+}
+
+.special-operators:hover {
+  width: 250px;
+  overflow: hidden; /* ensures that the extra width doesn't cause the extra width added to suddenly appear to the right of the calculator--the default is hidden, but still */
+  z-index: 1000;
+}
+
+.special-operators .btn {
+  font-size: 1.3rem;
+  background-color: #1de9b6;
+}
+
+@media (max-width: 375px) {
+
+  .content {
+    height: 95vh;
+  }
+
+  .footer {
+    margin-top: 10px;
+  }
+
+  .special-operators {
+    z-index: 1000;
+  }
+
+  .special-operators:hover {
+    z-index: 1000;
+  }
+
+}
+
+@media (min-width: 410px) and (min-height: 640px) {
+  .calc {
+    margin: auto;
+    margin-top: 10px;
+    width: 390px;
+    height: 630px;
+  }
+
+  .screen {
+    height: 240px;
+    font-size: 3.5rem;
+  }
+
+  .face-buttons {
+    width: 275px; /* need to set specific width of this element to prevent the special-operators:hover from shifting the margins */
+  }
+
+  .face-buttons .btn {
+    background-color: #434343; */
+  /*   width: 78px; */
+  }
+
+  .special-operators {
+    z-index: 1000;
+  }
+
+  .special-operators:hover {
+    z-index: 1000;
+    width: 300px;
+  }
+}
